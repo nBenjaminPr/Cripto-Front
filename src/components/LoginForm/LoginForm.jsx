@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { toast } from "react-toastify";
+;
+
+import axios from "../../config/axios";
 
 
 const LoginForm = () => {
@@ -16,11 +20,22 @@ const LoginForm = () => {
         })
     }
 
+    const handleSumit = async(e) =>{
+        try {
+            e.prevenDefault();   
+        const {data} = await axios.post("/users/login")  
+        
+        console.log(data);
+        } catch (error) {
+            toast.error ("Hubo un error");
+        }
+    }
 
-    return ( <Form>
+
+    return ( <Form  onSubmit={handleSumit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control onChange={handleChange} name="email" type="email" placeholder="Enter email" required />
+          <Form.Control value={values.email} onChange={handleChange} name="email" type="email" placeholder="Enter email"  />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
@@ -28,9 +43,9 @@ const LoginForm = () => {
   
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control name="password" type="password" placeholder="Password" required/>
+          <Form.Control value={values.password} name="password" type="password" placeholder="Password" />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button  variant="primary" type="submit">
           Submit
         </Button>
       </Form> );
