@@ -24,12 +24,12 @@ return (
         <Container>
             {pathname === "/login" ? (
             <Navbar.Brand href="/" className="logo-app ms-auto me-auto">
-                Cripto 15i
+                Cripto CRAZY
             </Navbar.Brand>
             ) : (
             <>
                     <Navbar.Brand href="/" className="logo-app">
-                Cripto 15i
+                Cripto CRAZY
                 </Navbar.Brand>
                 <Nav className="ms-auto">
                 <Link
