@@ -3,6 +3,11 @@ const LandingPage  = () => {
         <>
         <Header/>
         <LandingMain/>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         </>
      );
 }
