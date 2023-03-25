@@ -14,8 +14,6 @@ const Header = () => {
         setHeaderClass("landing-navbar-no-top");
         }
     });
-
-    return () => window.removeEventListener("scroll")
 }, []);
 
 const { pathname } = useLocation();
