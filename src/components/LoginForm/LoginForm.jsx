@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Alert, Button, Form } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 ;
 
@@ -7,6 +8,8 @@ import axios from "../../config/axios";
 
 
 const LoginForm = () => {
+
+  const navigate = useLocation();
 
     const [values, setValues] = useState({
         email:"",

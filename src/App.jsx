@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
+import PrivateRoute from './routes/PrivateRout'
 
 function App() {
   return (
@@ -10,6 +11,12 @@ function App() {
       <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path='/Login' element= {<LoginPage/>} />
+
+      <Route path="home" element= {
+      <PrivateRoute>
+      <Home/>
+      </PrivateRoute>} />
+
       </Routes>
       <ToastContainer/>
     </Router>
