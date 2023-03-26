@@ -4,9 +4,9 @@ const axios = axiosOrigin.create({
     baseURL: "http://localhost:4500",
 })
 
-axios.interceptors.response(()=> {
+// axios.interceptors.response(()=> {
 
-    
-})
+
+// })
 
 export default axios
