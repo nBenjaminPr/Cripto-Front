@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Alert, Button, Form } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 ;
 
@@ -9,7 +9,7 @@ import axios from "../../config/axios";
 
 const LoginForm = () => {
 
-  const navigate = useLocation();
+  const navigate = useNavigate();
 
     const [values, setValues] = useState({
         email:"",
@@ -29,7 +29,7 @@ const LoginForm = () => {
     const handleSubmit = async (e) => {
       try {
         e.preventDefault();
-        const { data } = await axios.post("/users/login", values);
+        const { data } = await axios.post("/users/login", values); //Llama al back
         localStorage.setItem("token", data.token);
         navigate("/home");
       } catch (error) {
