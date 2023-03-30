@@ -1,15 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Alert, Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-;
+import { UserContext } from "../../context/UserContext";
 
-import axios from "../../config/axios";
+
 
 
 const LoginForm = () => {
-
-  const navigate = useNavigate();
+  const {login} = useContext(UserContext)
 
     const [values, setValues] = useState({
         email:"",
@@ -27,26 +24,9 @@ const LoginForm = () => {
     }
 
     const handleSubmit = async (e) => {
-      try {
         e.preventDefault();
-        const { data } = await axios.post("/users/login", values); //Llama al back
-        localStorage.setItem("token", data.token);
-        navigate("/home");
-      } catch (error) {
-        toast.error("Ups! Hubo un error, intenta más tarde por favor");
-        setBackErrors(true);
-      }
+        login(values);
     };
-
-
-    useEffect (() => {
-      if (BackErrors) {
-        setTimeout(() => {
-          setBackErrors(false);
-          
-        }, 3000);
-      }
-    }, [BackErrors]);
 
 
     return ( <Form  onSubmit={handleSubmit}>
@@ -65,7 +45,7 @@ const LoginForm = () => {
         <Button  variant="primary" type="submit">
           Submit
         </Button>
-        {BackErrors && ( 
+        {false && ( 
         <Alert variant="danger" className="mt-3"> {" "}
             Los datos no son correctos
         </Alert>
